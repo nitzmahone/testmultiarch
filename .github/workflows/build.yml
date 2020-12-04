@@ -1,0 +1,24 @@
+---
+
+name: Test Multiarch Action
+on: [push, pull_request]
+jobs:
+  do_thing:
+    name: do a thing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: uraimo/run-on-arch-action@v2.0.7
+        name: do a thing on aarch64 fedora
+        id: athing
+        with:
+          arch: aarch64
+          distro: fedora_latest
+        githubToken: ${{ github.token }}
+        run: |
+          uname -a
+          echo ::set-output name=uname::$(uname -a)
+
+      - name: get output
+        run: |
+          echo "uname output was ${{ steps.athing.outputs.uname }}"
