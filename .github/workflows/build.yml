@@ -14,10 +14,10 @@ jobs:
         with:
           arch: aarch64
           distro: fedora_latest
-        githubToken: ${{ github.token }}
-        run: |
-          uname -a
-          echo ::set-output name=uname::$(uname -a)
+          githubToken: ${{ github.token }}
+          run: |
+            uname -a
+            echo ::set-output name=uname::$(uname -a)
 
       - name: get output
         run: |
