@@ -8,17 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: uraimo/run-on-arch-action@v2.0.7
+      - uses: ./.github/actions/run-on-arch-action
         name: do a thing on aarch64 fedora
         id: athing
         with:
           arch: aarch64
-          distro: fedora_latest
+          distro: manylinux2014
           githubToken: ${{ github.token }}
           run: |
             uname -a
             echo ::set-output name=uname::$(uname -a)
+            echo ::set-output name=pythonls::$(ls /opt/python)
 
       - name: get output
         run: |
           echo "uname output was ${{ steps.athing.outputs.uname }}"
+          echo "ls output was ${{ steps.athing.outputs.pythonls }}"
