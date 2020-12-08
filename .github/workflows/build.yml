@@ -15,7 +15,7 @@ jobs:
           arch: aarch64
           distro: manylinux2014
           githubToken: ${{ github.token }}
-          env:
+          env: |
             MYENV: 'something with spaces'
           run: |
             uname -a
