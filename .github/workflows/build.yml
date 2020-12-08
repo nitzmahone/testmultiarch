@@ -15,8 +15,11 @@ jobs:
           arch: aarch64
           distro: manylinux2014
           githubToken: ${{ github.token }}
+          dockerRunArgs: |
+            --env MYENV='hi mom'
           run: |
             uname -a
+            echo $MYENV
             echo ::set-output name=uname::$(uname -a)
             echo ::set-output name=pythonls::$(ls /opt/python)
 
