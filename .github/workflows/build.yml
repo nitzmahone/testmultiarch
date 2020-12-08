@@ -15,8 +15,8 @@ jobs:
           arch: aarch64
           distro: manylinux2014
           githubToken: ${{ github.token }}
-          dockerRunArgs: |
-            --env MYENV='hi mom'
+          env:
+            MYENV: 'something with spaces'
           run: |
             uname -a
             echo $MYENV
